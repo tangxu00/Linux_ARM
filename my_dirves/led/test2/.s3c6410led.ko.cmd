@@ -1,0 +1,1 @@
+cmd_/home/dooon/ARM/my_dirves/led/test2/s3c6410led.ko := arm-linux-ld -EL -r  -T /home/dooon/ARM/linux-2.6.38/scripts/module-common.lds --build-id  -o /home/dooon/ARM/my_dirves/led/test2/s3c6410led.ko /home/dooon/ARM/my_dirves/led/test2/s3c6410led.o /home/dooon/ARM/my_dirves/led/test2/s3c6410led.mod.o
