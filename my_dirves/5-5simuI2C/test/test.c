@@ -36,7 +36,7 @@ int main(int argc, char **argv)
         return 0; 
     } 
 
-	memset(&msg,0,sizeof(struct I2C_MSGbuffer));
+	/*memset(&msg,0,sizeof(struct I2C_MSGbuffer));
 	msg.addr=0x00;
 	msg.len=5;
 	for(i=0;i<5;i++)
@@ -45,7 +45,7 @@ int main(int argc, char **argv)
 	}
 	ret=ioctl(fd, I2C_WRITE_DATA, &msg);
 	printf("write %d successfully\n",ret); 
-
+*/
 
 	memset(&msg,0,sizeof(struct I2C_MSGbuffer));
 	msg.addr=0x00;

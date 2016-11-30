@@ -249,7 +249,7 @@ int readOnedate(unsigned char addr,unsigned char*ch)
 #endif
 		if(ret==0)
 		{
-			I2CStop();
+			//I2CStop();
 			I2CStart();
 			I2CSendByte(READ_DEV_ADDR);
 			ret=WaitAck();
@@ -334,8 +334,9 @@ static int I2C_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
         {
           break;
         }
-        printk("write %d successfully\n",i);
+        //printk("write %d successfully\n",i);
       }
+      printk("write %d successfully!\n",i);
       printk("ioctl read\n");
 			if (copy_from_user(&imsg,(char*)arg, sizeof(struct I2C_MSGbuffer)))
 			{

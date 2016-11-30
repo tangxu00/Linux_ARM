@@ -1,8 +1,8 @@
-cmd_/home/dooon/ARM/my_dirves/5-5simuI2C/test/sim_i2c.o := arm-linux-gcc -Wp,-MD,/home/dooon/ARM/my_dirves/5-5simuI2C/test/.sim_i2c.o.d  -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -I/home/dooon/ARM/linux-2.6.38/arch/arm/include -Iinclude  -include include/generated/autoconf.h -D__KERNEL__ -mlittle-endian -Iarch/arm/mach-s3c64xx/include -Iarch/arm/plat-samsung/include -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -Werror-implicit-function-declaration -Wno-format-security -fno-delete-null-pointer-checks -Os -marm -fno-dwarf2-cfi-asm -mabi=aapcs-linux -mno-thumb-interwork -funwind-tables -D__LINUX_ARM_ARCH__=6 -march=armv6k -mtune=arm1136j-s -msoft-float -Uarm -Wframe-larger-than=1024 -fno-stack-protector -fomit-frame-pointer -g -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fconserve-stack -DCC_HAVE_ASM_GOTO  -DMODULE  -D"KBUILD_STR(s)=\#s" -D"KBUILD_BASENAME=KBUILD_STR(sim_i2c)"  -D"KBUILD_MODNAME=KBUILD_STR(sim_i2c)" -c -o /home/dooon/ARM/my_dirves/5-5simuI2C/test/sim_i2c.o /home/dooon/ARM/my_dirves/5-5simuI2C/test/sim_i2c.c
+cmd_/home/dooon/arm/my_dirves/5-5simuI2C/test/sim_i2c.o := arm-linux-gcc -Wp,-MD,/home/dooon/arm/my_dirves/5-5simuI2C/test/.sim_i2c.o.d  -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -I/home/dooon/ARM/linux-2.6.38/arch/arm/include -Iinclude  -include include/generated/autoconf.h -D__KERNEL__ -mlittle-endian -Iarch/arm/mach-s3c64xx/include -Iarch/arm/plat-samsung/include -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -Werror-implicit-function-declaration -Wno-format-security -fno-delete-null-pointer-checks -Os -marm -fno-dwarf2-cfi-asm -mabi=aapcs-linux -mno-thumb-interwork -funwind-tables -D__LINUX_ARM_ARCH__=6 -march=armv6k -mtune=arm1136j-s -msoft-float -Uarm -Wframe-larger-than=1024 -fno-stack-protector -fomit-frame-pointer -g -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fconserve-stack -DCC_HAVE_ASM_GOTO  -DMODULE  -D"KBUILD_STR(s)=\#s" -D"KBUILD_BASENAME=KBUILD_STR(sim_i2c)"  -D"KBUILD_MODNAME=KBUILD_STR(sim_i2c)" -c -o /home/dooon/arm/my_dirves/5-5simuI2C/test/sim_i2c.o /home/dooon/arm/my_dirves/5-5simuI2C/test/sim_i2c.c
 
-source_/home/dooon/ARM/my_dirves/5-5simuI2C/test/sim_i2c.o := /home/dooon/ARM/my_dirves/5-5simuI2C/test/sim_i2c.c
+source_/home/dooon/arm/my_dirves/5-5simuI2C/test/sim_i2c.o := /home/dooon/arm/my_dirves/5-5simuI2C/test/sim_i2c.c
 
-deps_/home/dooon/ARM/my_dirves/5-5simuI2C/test/sim_i2c.o := \
+deps_/home/dooon/arm/my_dirves/5-5simuI2C/test/sim_i2c.o := \
   include/linux/kernel.h \
     $(wildcard include/config/lbdaf.h) \
     $(wildcard include/config/preempt/voluntary.h) \
@@ -519,6 +519,6 @@ deps_/home/dooon/ARM/my_dirves/5-5simuI2C/test/sim_i2c.o := \
   arch/arm/mach-s3c64xx/include/mach/map.h \
   arch/arm/plat-samsung/include/plat/map-base.h \
 
-/home/dooon/ARM/my_dirves/5-5simuI2C/test/sim_i2c.o: $(deps_/home/dooon/ARM/my_dirves/5-5simuI2C/test/sim_i2c.o)
+/home/dooon/arm/my_dirves/5-5simuI2C/test/sim_i2c.o: $(deps_/home/dooon/arm/my_dirves/5-5simuI2C/test/sim_i2c.o)
 
-$(deps_/home/dooon/ARM/my_dirves/5-5simuI2C/test/sim_i2c.o):
+$(deps_/home/dooon/arm/my_dirves/5-5simuI2C/test/sim_i2c.o):

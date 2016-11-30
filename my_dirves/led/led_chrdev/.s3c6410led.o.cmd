@@ -1,9 +1,8 @@
-cmd_/home/dooon/arm/my_dirves/5-5simuI2C/test/sim_i2c.mod.o := arm-linux-gcc -Wp,-MD,/home/dooon/arm/my_dirves/5-5simuI2C/test/.sim_i2c.mod.o.d  -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -I/home/dooon/ARM/linux-2.6.38/arch/arm/include -Iinclude  -include include/generated/autoconf.h -D__KERNEL__ -mlittle-endian -Iarch/arm/mach-s3c64xx/include -Iarch/arm/plat-samsung/include -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -Werror-implicit-function-declaration -Wno-format-security -fno-delete-null-pointer-checks -Os -marm -fno-dwarf2-cfi-asm -mabi=aapcs-linux -mno-thumb-interwork -funwind-tables -D__LINUX_ARM_ARCH__=6 -march=armv6k -mtune=arm1136j-s -msoft-float -Uarm -Wframe-larger-than=1024 -fno-stack-protector -fomit-frame-pointer -g -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fconserve-stack -DCC_HAVE_ASM_GOTO  -D"KBUILD_STR(s)=\#s" -D"KBUILD_BASENAME=KBUILD_STR(sim_i2c.mod)"  -D"KBUILD_MODNAME=KBUILD_STR(sim_i2c)" -DMODULE  -c -o /home/dooon/arm/my_dirves/5-5simuI2C/test/sim_i2c.mod.o /home/dooon/arm/my_dirves/5-5simuI2C/test/sim_i2c.mod.c
+cmd_/home/dooon/arm/my_dirves/led/test3/s3c6410led.o := arm-linux-gcc -Wp,-MD,/home/dooon/arm/my_dirves/led/test3/.s3c6410led.o.d  -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -I/home/dooon/ARM/linux-2.6.38/arch/arm/include -Iinclude  -include include/generated/autoconf.h -D__KERNEL__ -mlittle-endian -Iarch/arm/mach-s3c64xx/include -Iarch/arm/plat-samsung/include -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -Werror-implicit-function-declaration -Wno-format-security -fno-delete-null-pointer-checks -Os -marm -fno-dwarf2-cfi-asm -mabi=aapcs-linux -mno-thumb-interwork -funwind-tables -D__LINUX_ARM_ARCH__=6 -march=armv6k -mtune=arm1136j-s -msoft-float -Uarm -Wframe-larger-than=1024 -fno-stack-protector -fomit-frame-pointer -g -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fconserve-stack -DCC_HAVE_ASM_GOTO  -DMODULE  -D"KBUILD_STR(s)=\#s" -D"KBUILD_BASENAME=KBUILD_STR(s3c6410led)"  -D"KBUILD_MODNAME=KBUILD_STR(s3c6410led)" -c -o /home/dooon/arm/my_dirves/led/test3/s3c6410led.o /home/dooon/arm/my_dirves/led/test3/s3c6410led.c
 
-source_/home/dooon/arm/my_dirves/5-5simuI2C/test/sim_i2c.mod.o := /home/dooon/arm/my_dirves/5-5simuI2C/test/sim_i2c.mod.c
+source_/home/dooon/arm/my_dirves/led/test3/s3c6410led.o := /home/dooon/arm/my_dirves/led/test3/s3c6410led.c
 
-deps_/home/dooon/arm/my_dirves/5-5simuI2C/test/sim_i2c.mod.o := \
-    $(wildcard include/config/module/unload.h) \
+deps_/home/dooon/arm/my_dirves/led/test3/s3c6410led.o := \
   include/linux/module.h \
     $(wildcard include/config/symbol/prefix.h) \
     $(wildcard include/config/sysfs.h) \
@@ -17,6 +16,7 @@ deps_/home/dooon/arm/my_dirves/5-5simuI2C/test/sim_i2c.mod.o := \
     $(wildcard include/config/tracing.h) \
     $(wildcard include/config/event/tracing.h) \
     $(wildcard include/config/ftrace/mcount/record.h) \
+    $(wildcard include/config/module/unload.h) \
     $(wildcard include/config/constructors.h) \
     $(wildcard include/config/debug/set/module/ronx.h) \
   include/linux/list.h \
@@ -352,9 +352,179 @@ deps_/home/dooon/arm/my_dirves/5-5simuI2C/test/sim_i2c.mod.o := \
     $(wildcard include/config/arm/unwind.h) \
   include/trace/events/module.h \
   include/trace/define_trace.h \
-  include/linux/vermagic.h \
-  include/generated/utsrelease.h \
+  include/linux/fs.h \
+    $(wildcard include/config/quota.h) \
+    $(wildcard include/config/fsnotify.h) \
+    $(wildcard include/config/ima.h) \
+    $(wildcard include/config/security.h) \
+    $(wildcard include/config/fs/posix/acl.h) \
+    $(wildcard include/config/epoll.h) \
+    $(wildcard include/config/debug/writecount.h) \
+    $(wildcard include/config/file/locking.h) \
+    $(wildcard include/config/auditsyscall.h) \
+    $(wildcard include/config/block.h) \
+    $(wildcard include/config/fs/xip.h) \
+    $(wildcard include/config/migration.h) \
+  include/linux/limits.h \
+  include/linux/ioctl.h \
+  /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/ioctl.h \
+  include/asm-generic/ioctl.h \
+  include/linux/blk_types.h \
+    $(wildcard include/config/blk/dev/integrity.h) \
+  include/linux/kdev_t.h \
+  include/linux/dcache.h \
+  include/linux/rculist.h \
+  include/linux/rculist_bl.h \
+  include/linux/list_bl.h \
+  include/linux/path.h \
+  include/linux/radix-tree.h \
+  include/linux/prio_tree.h \
+  include/linux/pid.h \
+  include/linux/capability.h \
+  include/linux/semaphore.h \
+  include/linux/fiemap.h \
+  include/linux/quota.h \
+    $(wildcard include/config/quota/netlink/interface.h) \
+  include/linux/percpu_counter.h \
+  include/linux/dqblk_xfs.h \
+  include/linux/dqblk_v1.h \
+  include/linux/dqblk_v2.h \
+  include/linux/dqblk_qtree.h \
+  include/linux/nfs_fs_i.h \
+  include/linux/nfs.h \
+  include/linux/sunrpc/msg_prot.h \
+  include/linux/inet.h \
+  include/linux/fcntl.h \
+  /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/fcntl.h \
+  include/asm-generic/fcntl.h \
+  include/linux/err.h \
+  /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/uaccess.h \
+  /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/unified.h \
+    $(wildcard include/config/arm/asm/unified.h) \
+  include/linux/pci.h \
+    $(wildcard include/config/pci/iov.h) \
+    $(wildcard include/config/pcieaspm.h) \
+    $(wildcard include/config/pci/msi.h) \
+    $(wildcard include/config/pci.h) \
+    $(wildcard include/config/pcieportbus.h) \
+    $(wildcard include/config/pcieaer.h) \
+    $(wildcard include/config/pcie/ecrc.h) \
+    $(wildcard include/config/ht/irq.h) \
+    $(wildcard include/config/pci/domains.h) \
+    $(wildcard include/config/pci/quirks.h) \
+    $(wildcard include/config/pci/mmconfig.h) \
+    $(wildcard include/config/hotplug/pci.h) \
+  include/linux/pci_regs.h \
+  include/linux/mod_devicetable.h \
+  include/linux/ioport.h \
+  include/linux/device.h \
+    $(wildcard include/config/of.h) \
+    $(wildcard include/config/debug/devres.h) \
+    $(wildcard include/config/devtmpfs.h) \
+    $(wildcard include/config/sysfs/deprecated.h) \
+  include/linux/klist.h \
+  include/linux/pm.h \
+    $(wildcard include/config/pm.h) \
+    $(wildcard include/config/pm/sleep.h) \
+    $(wildcard include/config/pm/runtime.h) \
+    $(wildcard include/config/pm/ops.h) \
+  /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/device.h \
+    $(wildcard include/config/dmabounce.h) \
+  include/linux/pm_wakeup.h \
+  include/linux/io.h \
+    $(wildcard include/config/has/ioport.h) \
+  /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/io.h \
+  arch/arm/mach-s3c64xx/include/mach/io.h \
+  include/linux/irqreturn.h \
+  include/linux/pci_ids.h \
+  /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/pci.h \
+    $(wildcard include/config/pci/host/ite8152.h) \
+  include/asm-generic/pci-dma-compat.h \
+  include/linux/dma-mapping.h \
+    $(wildcard include/config/has/dma.h) \
+    $(wildcard include/config/have/dma/attrs.h) \
+    $(wildcard include/config/need/dma/map/state.h) \
+  include/linux/dma-attrs.h \
+  include/linux/bug.h \
+  include/linux/scatterlist.h \
+    $(wildcard include/config/debug/sg.h) \
+  /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/scatterlist.h \
+  include/asm-generic/scatterlist.h \
+    $(wildcard include/config/need/sg/dma/length.h) \
+  include/linux/mm.h \
+    $(wildcard include/config/sysctl.h) \
+    $(wildcard include/config/stack/growsup.h) \
+    $(wildcard include/config/transparent/hugepage.h) \
+    $(wildcard include/config/ksm.h) \
+    $(wildcard include/config/proc/fs.h) \
+    $(wildcard include/config/debug/pagealloc.h) \
+    $(wildcard include/config/hibernation.h) \
+    $(wildcard include/config/memory/failure.h) \
+    $(wildcard include/config/hugetlbfs.h) \
+  include/linux/rbtree.h \
+  include/linux/debug_locks.h \
+    $(wildcard include/config/debug/locking/api/selftests.h) \
+  include/linux/mm_types.h \
+    $(wildcard include/config/split/ptlock/cpus.h) \
+    $(wildcard include/config/want/page/debug/flags.h) \
+    $(wildcard include/config/aio.h) \
+    $(wildcard include/config/mm/owner.h) \
+    $(wildcard include/config/mmu/notifier.h) \
+  include/linux/auxvec.h \
+  /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/auxvec.h \
+  include/linux/page-debug-flags.h \
+    $(wildcard include/config/page/poisoning.h) \
+    $(wildcard include/config/page/debug/something/else.h) \
+  /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/mmu.h \
+    $(wildcard include/config/cpu/has/asid.h) \
+  include/linux/range.h \
+  include/linux/bit_spinlock.h \
+  /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/pgtable.h \
+    $(wildcard include/config/highpte.h) \
+  include/asm-generic/4level-fixup.h \
+  /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/proc-fns.h \
+    $(wildcard include/config/cpu/arm7tdmi.h) \
+    $(wildcard include/config/cpu/arm720t.h) \
+    $(wildcard include/config/cpu/arm740t.h) \
+    $(wildcard include/config/cpu/arm9tdmi.h) \
+    $(wildcard include/config/cpu/arm920t.h) \
+    $(wildcard include/config/cpu/arm922t.h) \
+    $(wildcard include/config/cpu/arm925t.h) \
+    $(wildcard include/config/cpu/arm926t.h) \
+    $(wildcard include/config/cpu/arm940t.h) \
+    $(wildcard include/config/cpu/arm946e.h) \
+    $(wildcard include/config/cpu/arm1020.h) \
+    $(wildcard include/config/cpu/arm1020e.h) \
+    $(wildcard include/config/cpu/arm1022.h) \
+    $(wildcard include/config/cpu/arm1026.h) \
+    $(wildcard include/config/cpu/mohawk.h) \
+    $(wildcard include/config/cpu/feroceon.h) \
+    $(wildcard include/config/cpu/v6.h) \
+    $(wildcard include/config/cpu/v7.h) \
+  /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/cpu-single.h \
+  arch/arm/mach-s3c64xx/include/mach/vmalloc.h \
+  /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/pgtable-hwdef.h \
+  include/asm-generic/pgtable.h \
+  include/linux/page-flags.h \
+    $(wildcard include/config/pageflags/extended.h) \
+    $(wildcard include/config/arch/uses/pg/uncached.h) \
+    $(wildcard include/config/swap.h) \
+    $(wildcard include/config/s390.h) \
+  include/linux/huge_mm.h \
+  include/linux/vmstat.h \
+    $(wildcard include/config/vm/event/counters.h) \
+  /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/dma-mapping.h \
+  include/linux/dma-debug.h \
+    $(wildcard include/config/dma/api/debug.h) \
+  include/asm-generic/dma-coherent.h \
+    $(wildcard include/config/have/generic/dma/coherent.h) \
+  /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/mach/pci.h \
+  arch/arm/mach-s3c64xx/include/mach/hardware.h \
+  arch/arm/mach-s3c64xx/include/mach/map.h \
+  arch/arm/plat-samsung/include/plat/map-base.h \
+  arch/arm/mach-s3c64xx/include/mach/regs-gpio.h \
+  arch/arm/mach-s3c64xx/include/mach/gpio-bank-k.h \
 
-/home/dooon/arm/my_dirves/5-5simuI2C/test/sim_i2c.mod.o: $(deps_/home/dooon/arm/my_dirves/5-5simuI2C/test/sim_i2c.mod.o)
+/home/dooon/arm/my_dirves/led/test3/s3c6410led.o: $(deps_/home/dooon/arm/my_dirves/led/test3/s3c6410led.o)
 
-$(deps_/home/dooon/arm/my_dirves/5-5simuI2C/test/sim_i2c.mod.o):
+$(deps_/home/dooon/arm/my_dirves/led/test3/s3c6410led.o):

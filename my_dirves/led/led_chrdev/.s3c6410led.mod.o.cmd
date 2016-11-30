@@ -1,8 +1,8 @@
-cmd_/home/dooon/arm/my_dirves/5-5simuI2C/test/sim_i2c.mod.o := arm-linux-gcc -Wp,-MD,/home/dooon/arm/my_dirves/5-5simuI2C/test/.sim_i2c.mod.o.d  -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -I/home/dooon/ARM/linux-2.6.38/arch/arm/include -Iinclude  -include include/generated/autoconf.h -D__KERNEL__ -mlittle-endian -Iarch/arm/mach-s3c64xx/include -Iarch/arm/plat-samsung/include -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -Werror-implicit-function-declaration -Wno-format-security -fno-delete-null-pointer-checks -Os -marm -fno-dwarf2-cfi-asm -mabi=aapcs-linux -mno-thumb-interwork -funwind-tables -D__LINUX_ARM_ARCH__=6 -march=armv6k -mtune=arm1136j-s -msoft-float -Uarm -Wframe-larger-than=1024 -fno-stack-protector -fomit-frame-pointer -g -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fconserve-stack -DCC_HAVE_ASM_GOTO  -D"KBUILD_STR(s)=\#s" -D"KBUILD_BASENAME=KBUILD_STR(sim_i2c.mod)"  -D"KBUILD_MODNAME=KBUILD_STR(sim_i2c)" -DMODULE  -c -o /home/dooon/arm/my_dirves/5-5simuI2C/test/sim_i2c.mod.o /home/dooon/arm/my_dirves/5-5simuI2C/test/sim_i2c.mod.c
+cmd_/home/dooon/arm/my_dirves/led/test3/s3c6410led.mod.o := arm-linux-gcc -Wp,-MD,/home/dooon/arm/my_dirves/led/test3/.s3c6410led.mod.o.d  -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -I/home/dooon/ARM/linux-2.6.38/arch/arm/include -Iinclude  -include include/generated/autoconf.h -D__KERNEL__ -mlittle-endian -Iarch/arm/mach-s3c64xx/include -Iarch/arm/plat-samsung/include -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -Werror-implicit-function-declaration -Wno-format-security -fno-delete-null-pointer-checks -Os -marm -fno-dwarf2-cfi-asm -mabi=aapcs-linux -mno-thumb-interwork -funwind-tables -D__LINUX_ARM_ARCH__=6 -march=armv6k -mtune=arm1136j-s -msoft-float -Uarm -Wframe-larger-than=1024 -fno-stack-protector -fomit-frame-pointer -g -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fconserve-stack -DCC_HAVE_ASM_GOTO  -D"KBUILD_STR(s)=\#s" -D"KBUILD_BASENAME=KBUILD_STR(s3c6410led.mod)"  -D"KBUILD_MODNAME=KBUILD_STR(s3c6410led)" -DMODULE  -c -o /home/dooon/arm/my_dirves/led/test3/s3c6410led.mod.o /home/dooon/arm/my_dirves/led/test3/s3c6410led.mod.c
 
-source_/home/dooon/arm/my_dirves/5-5simuI2C/test/sim_i2c.mod.o := /home/dooon/arm/my_dirves/5-5simuI2C/test/sim_i2c.mod.c
+source_/home/dooon/arm/my_dirves/led/test3/s3c6410led.mod.o := /home/dooon/arm/my_dirves/led/test3/s3c6410led.mod.c
 
-deps_/home/dooon/arm/my_dirves/5-5simuI2C/test/sim_i2c.mod.o := \
+deps_/home/dooon/arm/my_dirves/led/test3/s3c6410led.mod.o := \
     $(wildcard include/config/module/unload.h) \
   include/linux/module.h \
     $(wildcard include/config/symbol/prefix.h) \
@@ -355,6 +355,6 @@ deps_/home/dooon/arm/my_dirves/5-5simuI2C/test/sim_i2c.mod.o := \
   include/linux/vermagic.h \
   include/generated/utsrelease.h \
 
-/home/dooon/arm/my_dirves/5-5simuI2C/test/sim_i2c.mod.o: $(deps_/home/dooon/arm/my_dirves/5-5simuI2C/test/sim_i2c.mod.o)
+/home/dooon/arm/my_dirves/led/test3/s3c6410led.mod.o: $(deps_/home/dooon/arm/my_dirves/led/test3/s3c6410led.mod.o)
 
-$(deps_/home/dooon/arm/my_dirves/5-5simuI2C/test/sim_i2c.mod.o):
+$(deps_/home/dooon/arm/my_dirves/led/test3/s3c6410led.mod.o):
