@@ -16,18 +16,22 @@
 #define WDIOC_SETTIMEOUT 2
 int main(int argc,const char *argv[])
 {
+  char buf[2]={WDIOC_KEEPALIVE,WDIOC_SETTIMEOUT,};
   int fd = open("/dev/wdc", O_WRONLY);
   if (fd==1)
   {
     perror("wdc");
     exit(1);
   }
-  int timeout =4;
-  ioctl(fd,WDIOC_SETTIMEOUT,&timeout);
+  //int timeout =4;
+  //ioctl(fd,WDIOC_SETTIMEOUT,&timeout);
+  write(fd,&buf[1],4);
   while(1)
   {
-    ioctl(fd,WDIOC_KEEPALIVE,0);
+    //ioctl(fd,WDIOC_KEEPALIVE,0);
+    write(fd,&buf[0],4);
     sleep(1);
   }
   close(fd);
+  return 0;
 }

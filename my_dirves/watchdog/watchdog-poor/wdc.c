@@ -62,14 +62,39 @@ return 0;
 
 int wdc_release(struct inode *inode,struct file *filp)
 {
-  printk("watchdog realse\n");
+  //printk("watchdog realse\n");
   return 0;
+}
+
+static int wdc_write(struct file *filp,const char __user *buf,size_t count,loff_t *f_pos)
+{
+  char wbuf[2];
+  //printk("write begin\n");
+  if(copy_from_user(wbuf,buf,count))
+    return -EFAULT;
+      switch(wbuf[0])
+      {
+  case WDIOC_KEEPALIVE:
+      printk("S3C64XX_WDDAT 0X%x\n",readl(s3c_wdc_base + S3C64XX_WDDAT));
+      printk("S3C64XX_WDCON 0X%x\n",readl(s3c_wdc_base + S3C64XX_WDCON));
+      writel(wdctimeout,s3c_wdc_base + S3C64XX_WDCNT);
+      printk("S3C64XX_WDCNT 0X%x\n",readl(s3c_wdc_base + S3C64XX_WDCNT));
+      break;
+  case WDIOC_SETTIMEOUT:
+      wdctimeout = 4*10000;
+      printk("wdctimeout %d\n",wdctimeout);
+      writel(wdctimeout,s3c_wdc_base + S3C64XX_WDDAT);
+      break;
+  default:
+      break;
+      }
+      return 0;
 }
 
 static long wdc_ioctl(struct file *filp,unsigned int cmd,unsigned long arg)
 {
-  void __user *argp = (void __user *)arg;
-  int __user *p = argp;
+  //void __user *argp = (void __user *)arg;
+  //int __user *p = argp;
   if(cmd==WDIOC_KEEPALIVE)
   {
       printk("S3C64XX_WDDAT 0X%x\n",readl(s3c_wdc_base + S3C64XX_WDDAT));
@@ -79,7 +104,7 @@ static long wdc_ioctl(struct file *filp,unsigned int cmd,unsigned long arg)
   }
   if(cmd==WDIOC_SETTIMEOUT)
   {
-      wdctimeout = (*p)*10000;
+      wdctimeout = arg*10000;
       printk("wdctimeout %d\n",wdctimeout);
       writel(wdctimeout,s3c_wdc_base + S3C64XX_WDDAT);
   }
@@ -89,6 +114,7 @@ struct file_operations wdc_fops =
 {
   .owner = THIS_MODULE,
   .open = wdc_open,
+  .write = wdc_write,
   .unlocked_ioctl = wdc_ioctl,
   .release = wdc_release,
 };

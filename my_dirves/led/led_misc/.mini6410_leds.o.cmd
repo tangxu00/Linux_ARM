@@ -1,8 +1,8 @@
-cmd_/home/dooon/ARM/my_dirves/led/test/mini6410_leds.o := arm-linux-gcc -Wp,-MD,/home/dooon/ARM/my_dirves/led/test/.mini6410_leds.o.d  -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -I/home/dooon/ARM/linux-2.6.38/arch/arm/include -Iinclude  -include include/generated/autoconf.h -D__KERNEL__ -mlittle-endian -Iarch/arm/mach-s3c64xx/include -Iarch/arm/plat-samsung/include -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -Werror-implicit-function-declaration -Wno-format-security -fno-delete-null-pointer-checks -Os -marm -fno-dwarf2-cfi-asm -mabi=aapcs-linux -mno-thumb-interwork -funwind-tables -D__LINUX_ARM_ARCH__=6 -march=armv6k -mtune=arm1136j-s -msoft-float -Uarm -Wframe-larger-than=1024 -fno-stack-protector -fomit-frame-pointer -g -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fconserve-stack -DCC_HAVE_ASM_GOTO  -DMODULE  -D"KBUILD_STR(s)=\#s" -D"KBUILD_BASENAME=KBUILD_STR(mini6410_leds)"  -D"KBUILD_MODNAME=KBUILD_STR(mini6410_leds)" -c -o /home/dooon/ARM/my_dirves/led/test/mini6410_leds.o /home/dooon/ARM/my_dirves/led/test/mini6410_leds.c
+cmd_/home/dooon/arm/my_dirves/led/led_misc/mini6410_leds.o := arm-linux-gcc -Wp,-MD,/home/dooon/arm/my_dirves/led/led_misc/.mini6410_leds.o.d  -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -I/home/dooon/ARM/linux-2.6.38/arch/arm/include -Iinclude  -include include/generated/autoconf.h -D__KERNEL__ -mlittle-endian -Iarch/arm/mach-s3c64xx/include -Iarch/arm/plat-samsung/include -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -Werror-implicit-function-declaration -Wno-format-security -fno-delete-null-pointer-checks -Os -marm -fno-dwarf2-cfi-asm -mabi=aapcs-linux -mno-thumb-interwork -funwind-tables -D__LINUX_ARM_ARCH__=6 -march=armv6k -mtune=arm1136j-s -msoft-float -Uarm -Wframe-larger-than=1024 -fno-stack-protector -fomit-frame-pointer -g -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fconserve-stack -DCC_HAVE_ASM_GOTO  -DMODULE  -D"KBUILD_STR(s)=\#s" -D"KBUILD_BASENAME=KBUILD_STR(mini6410_leds)"  -D"KBUILD_MODNAME=KBUILD_STR(mini6410_leds)" -c -o /home/dooon/arm/my_dirves/led/led_misc/mini6410_leds.o /home/dooon/arm/my_dirves/led/led_misc/mini6410_leds.c
 
-source_/home/dooon/ARM/my_dirves/led/test/mini6410_leds.o := /home/dooon/ARM/my_dirves/led/test/mini6410_leds.c
+source_/home/dooon/arm/my_dirves/led/led_misc/mini6410_leds.o := /home/dooon/arm/my_dirves/led/led_misc/mini6410_leds.c
 
-deps_/home/dooon/ARM/my_dirves/led/test/mini6410_leds.o := \
+deps_/home/dooon/arm/my_dirves/led/led_misc/mini6410_leds.o := \
   include/linux/miscdevice.h \
   include/linux/module.h \
     $(wildcard include/config/symbol/prefix.h) \
@@ -551,6 +551,6 @@ deps_/home/dooon/ARM/my_dirves/led/test/mini6410_leds.o := \
   arch/arm/mach-s3c64xx/include/mach/gpio-bank-e.h \
   arch/arm/mach-s3c64xx/include/mach/gpio-bank-k.h \
 
-/home/dooon/ARM/my_dirves/led/test/mini6410_leds.o: $(deps_/home/dooon/ARM/my_dirves/led/test/mini6410_leds.o)
+/home/dooon/arm/my_dirves/led/led_misc/mini6410_leds.o: $(deps_/home/dooon/arm/my_dirves/led/led_misc/mini6410_leds.o)
 
-$(deps_/home/dooon/ARM/my_dirves/led/test/mini6410_leds.o):
+$(deps_/home/dooon/arm/my_dirves/led/led_misc/mini6410_leds.o):

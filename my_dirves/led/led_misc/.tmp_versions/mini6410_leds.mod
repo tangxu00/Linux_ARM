@@ -1,2 +1,2 @@
-/home/dooon/ARM/my_dirves/led/test/mini6410_leds.ko
-/home/dooon/ARM/my_dirves/led/test/mini6410_leds.o
+/home/dooon/arm/my_dirves/led/led_misc/mini6410_leds.ko
+/home/dooon/arm/my_dirves/led/led_misc/mini6410_leds.o
