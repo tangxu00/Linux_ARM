@@ -20,7 +20,9 @@
     #include <mach/regs-gpio.h>      
     #include <mach/gpio-bank-k.h>      
     #include <asm/system.h>
-      
+    #include <asm/io.h>
+    #include <asm/irq.h>
+    #include <asm/signal.h>
         
     //#define LED_MAJOR   243  
       
@@ -34,9 +36,17 @@
     #define LED_3_OFF   7  
     #define LED_4_ON    8  
     #define LED_4_OFF   9  
+    #define S3C64XX_PA_WDC (0X7E004000)
+    #define S3C64XX_WDCON 0
+    #define S3C64XX_WDDAT 4
+    #define S3C64XX_WDCNT 8
+    #define WDC_RESET_ENABLE      (1<<0)
+    #define WDC_INTERRUPT_ENABLE  (1<<2)
+    #define WDC_TIMER_ENABLE      (1<<5)
     
     #define LED_MAJOR 0
     #define LED_NAME "led"
+    static void __iomem *s3c_wdc_base;
     static int led_major = LED_MAJOR;
     struct simple_dev //led 设备结构体
     {
@@ -54,6 +64,12 @@
         writel(tmp, S3C64XX_GPKCON);     
       
         printk("#########open######\n");    
+
+        writel(40000,s3c_wdc_base + S3C64XX_WDDAT);
+        writel(40000,s3c_wdc_base + S3C64XX_WDCNT);
+        writel(((0x67<<8)|(0x1<<4))|WDC_RESET_ENABLE|WDC_TIMER_ENABLE,s3c_wdc_base + S3C64XX_WDCON);
+        printk("S3C64XX_WDCON 0X%x\n",readl(s3c_wdc_base + S3C64XX_WDCON));
+        printk("S3C64XX_WDCNT 0x%x\n",readl(s3c_wdc_base + S3C64XX_WDCNT));
         return 0;    
     }    
         
@@ -218,6 +234,7 @@
           printk(KERN_NOTICE "Error in cdev_add()\n"); 
         }
         //led_setup_dev(ledDev,0);
+        s3c_wdc_base = ioremap(S3C64XX_PA_WDC,0XFF);
         return 0;
 failure_register_chrdev:
         return ret;

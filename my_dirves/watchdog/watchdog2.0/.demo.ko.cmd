@@ -1,1 +1,0 @@
-cmd_/home/dooon/ARM/linux驱动程序开发实例/src/5hardsimple/5-1wdc/demo/demo.ko := arm-linux-ld -EL -r  -T /home/dooon/ARM/linux-2.6.38/scripts/module-common.lds --build-id  -o /home/dooon/ARM/linux驱动程序开发实例/src/5hardsimple/5-1wdc/demo/demo.ko /home/dooon/ARM/linux驱动程序开发实例/src/5hardsimple/5-1wdc/demo/demo.o /home/dooon/ARM/linux驱动程序开发实例/src/5hardsimple/5-1wdc/demo/demo.mod.o

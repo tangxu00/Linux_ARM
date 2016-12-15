@@ -1,0 +1,1 @@
+cmd_/home/dooon/arm/my_dirves/watchdog/watchdog-poor/wdc.ko := arm-linux-ld -EL -r  -T /home/dooon/ARM/linux-2.6.38/scripts/module-common.lds --build-id  -o /home/dooon/arm/my_dirves/watchdog/watchdog-poor/wdc.ko /home/dooon/arm/my_dirves/watchdog/watchdog-poor/wdc.o /home/dooon/arm/my_dirves/watchdog/watchdog-poor/wdc.mod.o

@@ -25,11 +25,11 @@ int main(int argc,const char *argv[])
   }
   //int timeout =4;
   //ioctl(fd,WDIOC_SETTIMEOUT,&timeout);
-  write(fd,&buf[1],4);
+//  write(fd,&buf[1],4);
   while(1)
   {
     //ioctl(fd,WDIOC_KEEPALIVE,0);
-    write(fd,&buf[0],4);
+    write(fd,&buf[1],4);
     sleep(1);
   }
   close(fd);

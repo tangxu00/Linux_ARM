@@ -8,7 +8,7 @@
     #include <mach/map.h>     
     #include <mach/regs-gpio.h>      
     #include <mach/gpio-bank-k.h>      
-      
+    
         
     #define LED_MAJOR   243  
       
@@ -23,6 +23,7 @@
     #define LED_4_ON    8  
     #define LED_4_OFF   9  
       
+
        
     static int led_open (struct inode *inode,struct file *filp)    
         

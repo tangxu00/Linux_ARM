@@ -27,13 +27,17 @@
 #include<asm/signal.h>
 #include<asm/uaccess.h>
 
-#define S3C64XX_PA_WDC (0X7E00400)
+#define S3C64XX_PA_WDC (0X7E004000)//曾误写少加一个0,浪费了2天时间查找错误，devil in the detial
 #define S3C64XX_WDCON 0
 #define S3C64XX_WDDAT 4
 #define S3C64XX_WDCNT 8
 #define S3C64XX_WDLRINT 12
 #define WDIOC_KEEPALIVE  1
 #define WDIOC_SETTIMEOUT 2
+
+#define WDC_RESET_ENABLE      (1<<0)
+#define WDC_INTERRUPT_ENABLE  (1<<2)
+#define WDC_TIMER_ENABLE      (1<<5)
 
 static void __iomem *s3c_wdc_base;
 static int wdc_major = 0;
@@ -46,16 +50,18 @@ static int wdctimeout = 0;
 
 int wdc_open(struct inode *inode,struct file *filp)
 {
-  //struct simple_dev *dev;
+  struct simple_dev *dev;
   printk("watchdog open\n");
-  //dev = container_of(inode->i_cdev,struct simple_dev,cdev);
-  //filp->private_data = dev;
+  dev = container_of(inode->i_cdev,struct simple_dev,wdc_cdev);
+  filp->private_data = dev;
   //int tmp = 0X6731;
-  //t_watchdag = (104*64)/66500000 =0.00001s
+  //t_watchdag = (104*64)/66500000 =0.0001s
   wdctimeout = 0xffff;
   writel(wdctimeout,s3c_wdc_base + S3C64XX_WDCNT);
-  writel(0X6731,s3c_wdc_base + S3C64XX_WDCON);
+  writel(40000,s3c_wdc_base + S3C64XX_WDDAT);
+  writel(0x6731,s3c_wdc_base + S3C64XX_WDCON);
   printk("S3C64XX_WDCON 0X%x\n",readl(s3c_wdc_base + S3C64XX_WDCON));
+  printk("S3C64XX_WDCNT 0x%x\n",readl(s3c_wdc_base + S3C64XX_WDCNT));
 return 0;
 
 }
@@ -81,9 +87,10 @@ static int wdc_write(struct file *filp,const char __user *buf,size_t count,loff_
       printk("S3C64XX_WDCNT 0X%x\n",readl(s3c_wdc_base + S3C64XX_WDCNT));
       break;
   case WDIOC_SETTIMEOUT:
-      wdctimeout = 4*10000;
-      printk("wdctimeout %d\n",wdctimeout);
-      writel(wdctimeout,s3c_wdc_base + S3C64XX_WDDAT);
+      //wdctimeout = 4*10000;
+      //printk("wdctimeout %d\n",wdctimeout);
+      //writel(wdctimeout,s3c_wdc_base + S3C64XX_WDDAT);
+      printk("S3C64XX_WDCNT 0x%x\n",readl(s3c_wdc_base + S3C64XX_WDCNT));
       break;
   default:
       break;
@@ -91,7 +98,7 @@ static int wdc_write(struct file *filp,const char __user *buf,size_t count,loff_
       return 0;
 }
 
-static long wdc_ioctl(struct file *filp,unsigned int cmd,unsigned long arg)
+/*static long wdc_ioctl(struct file *filp,unsigned int cmd,unsigned long arg)
 {
   //void __user *argp = (void __user *)arg;
   //int __user *p = argp;
@@ -109,13 +116,13 @@ static long wdc_ioctl(struct file *filp,unsigned int cmd,unsigned long arg)
       writel(wdctimeout,s3c_wdc_base + S3C64XX_WDDAT);
   }
 return -EFAULT;
-}
+}*/
 struct file_operations wdc_fops =
 {
   .owner = THIS_MODULE,
   .open = wdc_open,
   .write = wdc_write,
-  .unlocked_ioctl = wdc_ioctl,
+  //.unlocked_ioctl = wdc_ioctl,
   .release = wdc_release,
 };
 
