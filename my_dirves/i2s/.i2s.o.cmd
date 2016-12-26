@@ -1,37 +1,20 @@
-cmd_/home/dooon/arm/my_dirves/watchdog/watchdog-poor/wdc.o := arm-linux-gcc -Wp,-MD,/home/dooon/arm/my_dirves/watchdog/watchdog-poor/.wdc.o.d  -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -I/home/dooon/ARM/linux-2.6.38/arch/arm/include -Iinclude  -include include/generated/autoconf.h -D__KERNEL__ -mlittle-endian -Iarch/arm/mach-s3c64xx/include -Iarch/arm/plat-samsung/include -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -Werror-implicit-function-declaration -Wno-format-security -fno-delete-null-pointer-checks -Os -marm -fno-dwarf2-cfi-asm -mabi=aapcs-linux -mno-thumb-interwork -funwind-tables -D__LINUX_ARM_ARCH__=6 -march=armv6k -mtune=arm1136j-s -msoft-float -Uarm -Wframe-larger-than=1024 -fno-stack-protector -fomit-frame-pointer -g -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fconserve-stack -DCC_HAVE_ASM_GOTO  -DMODULE  -D"KBUILD_STR(s)=\#s" -D"KBUILD_BASENAME=KBUILD_STR(wdc)"  -D"KBUILD_MODNAME=KBUILD_STR(wdc)" -c -o /home/dooon/arm/my_dirves/watchdog/watchdog-poor/wdc.o /home/dooon/arm/my_dirves/watchdog/watchdog-poor/wdc.c
+cmd_/home/dooon/arm/my_dirves/i2s/i2s.o := arm-linux-gcc -Wp,-MD,/home/dooon/arm/my_dirves/i2s/.i2s.o.d  -nostdinc -isystem /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -I/home/dooon/ARM/linux-2.6.38/arch/arm/include -Iinclude  -include include/generated/autoconf.h -D__KERNEL__ -mlittle-endian -Iarch/arm/mach-s3c64xx/include -Iarch/arm/plat-samsung/include -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -Werror-implicit-function-declaration -Wno-format-security -fno-delete-null-pointer-checks -Os -marm -fno-dwarf2-cfi-asm -mabi=aapcs-linux -mno-thumb-interwork -funwind-tables -D__LINUX_ARM_ARCH__=6 -march=armv6k -mtune=arm1136j-s -msoft-float -Uarm -Wframe-larger-than=1024 -fno-stack-protector -fomit-frame-pointer -g -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fconserve-stack -DCC_HAVE_ASM_GOTO  -DMODULE  -D"KBUILD_STR(s)=\#s" -D"KBUILD_BASENAME=KBUILD_STR(i2s)"  -D"KBUILD_MODNAME=KBUILD_STR(i2s)" -c -o /home/dooon/arm/my_dirves/i2s/i2s.o /home/dooon/arm/my_dirves/i2s/i2s.c
 
-source_/home/dooon/arm/my_dirves/watchdog/watchdog-poor/wdc.o := /home/dooon/arm/my_dirves/watchdog/watchdog-poor/wdc.c
+source_/home/dooon/arm/my_dirves/i2s/i2s.o := /home/dooon/arm/my_dirves/i2s/i2s.c
 
-deps_/home/dooon/arm/my_dirves/watchdog/watchdog-poor/wdc.o := \
-  include/linux/module.h \
-    $(wildcard include/config/symbol/prefix.h) \
-    $(wildcard include/config/sysfs.h) \
-    $(wildcard include/config/modules.h) \
-    $(wildcard include/config/modversions.h) \
-    $(wildcard include/config/unused/symbols.h) \
-    $(wildcard include/config/generic/bug.h) \
-    $(wildcard include/config/kallsyms.h) \
-    $(wildcard include/config/smp.h) \
-    $(wildcard include/config/tracepoints.h) \
-    $(wildcard include/config/tracing.h) \
-    $(wildcard include/config/event/tracing.h) \
-    $(wildcard include/config/ftrace/mcount/record.h) \
-    $(wildcard include/config/module/unload.h) \
-    $(wildcard include/config/constructors.h) \
-    $(wildcard include/config/debug/set/module/ronx.h) \
-  include/linux/list.h \
-    $(wildcard include/config/debug/list.h) \
-  include/linux/types.h \
-    $(wildcard include/config/uid16.h) \
+deps_/home/dooon/arm/my_dirves/i2s/i2s.o := \
+  include/linux/kernel.h \
     $(wildcard include/config/lbdaf.h) \
-    $(wildcard include/config/phys/addr/t/64bit.h) \
-    $(wildcard include/config/64bit.h) \
-  /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/types.h \
-  include/asm-generic/int-ll64.h \
-  /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/bitsperlong.h \
-  include/asm-generic/bitsperlong.h \
-  include/linux/posix_types.h \
-  include/linux/stddef.h \
+    $(wildcard include/config/preempt/voluntary.h) \
+    $(wildcard include/config/debug/spinlock/sleep.h) \
+    $(wildcard include/config/prove/locking.h) \
+    $(wildcard include/config/ring/buffer.h) \
+    $(wildcard include/config/tracing.h) \
+    $(wildcard include/config/numa.h) \
+    $(wildcard include/config/compaction.h) \
+    $(wildcard include/config/ftrace/mcount/record.h) \
+  /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include/stdarg.h \
+  include/linux/linkage.h \
   include/linux/compiler.h \
     $(wildcard include/config/sparse/rcu/pointer.h) \
     $(wildcard include/config/trace/branch/profiling.h) \
@@ -42,40 +25,22 @@ deps_/home/dooon/arm/my_dirves/watchdog/watchdog-poor/wdc.o := \
     $(wildcard include/config/arch/supports/optimized/inlining.h) \
     $(wildcard include/config/optimize/inlining.h) \
   include/linux/compiler-gcc4.h \
-  /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/posix_types.h \
-  include/linux/poison.h \
-    $(wildcard include/config/illegal/pointer/value.h) \
-  include/linux/prefetch.h \
-  /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/processor.h \
-    $(wildcard include/config/have/hw/breakpoint.h) \
-    $(wildcard include/config/mmu.h) \
-  /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/hw_breakpoint.h \
-  /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/ptrace.h \
-    $(wildcard include/config/cpu/endian/be8.h) \
-    $(wildcard include/config/arm/thumb.h) \
-  /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/hwcap.h \
-  /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/cache.h \
-    $(wildcard include/config/arm/l1/cache/shift.h) \
-    $(wildcard include/config/aeabi.h) \
-  include/linux/stat.h \
-  /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/stat.h \
-  include/linux/time.h \
-    $(wildcard include/config/arch/uses/gettimeoffset.h) \
-  include/linux/cache.h \
-    $(wildcard include/config/arch/has/cache/line/size.h) \
-  include/linux/kernel.h \
-    $(wildcard include/config/preempt/voluntary.h) \
-    $(wildcard include/config/debug/spinlock/sleep.h) \
-    $(wildcard include/config/prove/locking.h) \
-    $(wildcard include/config/ring/buffer.h) \
-    $(wildcard include/config/numa.h) \
-    $(wildcard include/config/compaction.h) \
-  /opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include/stdarg.h \
-  include/linux/linkage.h \
   /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/linkage.h \
+  include/linux/stddef.h \
+  include/linux/types.h \
+    $(wildcard include/config/uid16.h) \
+    $(wildcard include/config/phys/addr/t/64bit.h) \
+    $(wildcard include/config/64bit.h) \
+  /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/types.h \
+  include/asm-generic/int-ll64.h \
+  /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/bitsperlong.h \
+  include/asm-generic/bitsperlong.h \
+  include/linux/posix_types.h \
+  /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/posix_types.h \
   include/linux/bitops.h \
     $(wildcard include/config/generic/find/last/bit.h) \
   /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/bitops.h \
+    $(wildcard include/config/smp.h) \
   /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/system.h \
     $(wildcard include/config/function/graph/tracer.h) \
     $(wildcard include/config/cpu/32v6k.h) \
@@ -92,6 +57,10 @@ deps_/home/dooon/arm/my_dirves/watchdog/watchdog-poor/wdc.o := \
     $(wildcard include/config/trace/irqflags/support.h) \
   include/linux/typecheck.h \
   /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/irqflags.h \
+  /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/ptrace.h \
+    $(wildcard include/config/cpu/endian/be8.h) \
+    $(wildcard include/config/arm/thumb.h) \
+  /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/hwcap.h \
   /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/outercache.h \
     $(wildcard include/config/outer/cache/sync.h) \
     $(wildcard include/config/outer/cache.h) \
@@ -121,13 +90,66 @@ deps_/home/dooon/arm/my_dirves/watchdog/watchdog-poor/wdc.o := \
     $(wildcard include/config/bug.h) \
     $(wildcard include/config/debug/bugverbose.h) \
   include/asm-generic/bug.h \
+    $(wildcard include/config/generic/bug.h) \
     $(wildcard include/config/generic/bug/relative/pointers.h) \
+  include/linux/init.h \
+    $(wildcard include/config/modules.h) \
+    $(wildcard include/config/hotplug.h) \
+  include/linux/configfs.h \
+  include/linux/list.h \
+    $(wildcard include/config/debug/list.h) \
+  include/linux/poison.h \
+    $(wildcard include/config/illegal/pointer/value.h) \
+  include/linux/prefetch.h \
+  /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/processor.h \
+    $(wildcard include/config/have/hw/breakpoint.h) \
+    $(wildcard include/config/mmu.h) \
+  /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/hw_breakpoint.h \
+  /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/cache.h \
+    $(wildcard include/config/arm/l1/cache/shift.h) \
+    $(wildcard include/config/aeabi.h) \
+  include/linux/kref.h \
+  include/linux/mutex.h \
+    $(wildcard include/config/debug/mutexes.h) \
+    $(wildcard include/config/debug/lock/alloc.h) \
+    $(wildcard include/config/have/arch/mutex/cpu/relax.h) \
+  include/linux/spinlock_types.h \
+    $(wildcard include/config/generic/lockbreak.h) \
+    $(wildcard include/config/debug/spinlock.h) \
+  include/linux/spinlock_types_up.h \
+  include/linux/lockdep.h \
+    $(wildcard include/config/lockdep.h) \
+    $(wildcard include/config/lock/stat.h) \
+    $(wildcard include/config/prove/rcu.h) \
+  include/linux/rwlock_types.h \
+  /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/atomic.h \
+    $(wildcard include/config/generic/atomic64.h) \
+  include/asm-generic/atomic-long.h \
+  include/linux/mutex-debug.h \
+  include/linux/err.h \
+  /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/errno.h \
+  include/asm-generic/errno.h \
+  include/asm-generic/errno-base.h \
+  include/linux/module.h \
+    $(wildcard include/config/symbol/prefix.h) \
+    $(wildcard include/config/sysfs.h) \
+    $(wildcard include/config/modversions.h) \
+    $(wildcard include/config/unused/symbols.h) \
+    $(wildcard include/config/kallsyms.h) \
+    $(wildcard include/config/tracepoints.h) \
+    $(wildcard include/config/event/tracing.h) \
+    $(wildcard include/config/module/unload.h) \
+    $(wildcard include/config/constructors.h) \
+    $(wildcard include/config/debug/set/module/ronx.h) \
+  include/linux/stat.h \
+  /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/stat.h \
+  include/linux/time.h \
+    $(wildcard include/config/arch/uses/gettimeoffset.h) \
+  include/linux/cache.h \
+    $(wildcard include/config/arch/has/cache/line/size.h) \
   include/linux/seqlock.h \
   include/linux/spinlock.h \
-    $(wildcard include/config/debug/spinlock.h) \
-    $(wildcard include/config/generic/lockbreak.h) \
     $(wildcard include/config/preempt.h) \
-    $(wildcard include/config/debug/lock/alloc.h) \
   include/linux/preempt.h \
     $(wildcard include/config/debug/preempt.h) \
     $(wildcard include/config/preempt/notifiers.h) \
@@ -143,13 +165,6 @@ deps_/home/dooon/arm/my_dirves/watchdog/watchdog-poor/wdc.o := \
     $(wildcard include/config/cpu/use/domains.h) \
   include/linux/stringify.h \
   include/linux/bottom_half.h \
-  include/linux/spinlock_types.h \
-  include/linux/spinlock_types_up.h \
-  include/linux/lockdep.h \
-    $(wildcard include/config/lockdep.h) \
-    $(wildcard include/config/lock/stat.h) \
-    $(wildcard include/config/prove/rcu.h) \
-  include/linux/rwlock_types.h \
   include/linux/spinlock_up.h \
   include/linux/rwlock.h \
   include/linux/spinlock_api_smp.h \
@@ -182,9 +197,6 @@ deps_/home/dooon/arm/my_dirves/watchdog/watchdog-poor/wdc.o := \
     $(wildcard include/config/inline/write/unlock/irq.h) \
     $(wildcard include/config/inline/read/unlock/irqrestore.h) \
     $(wildcard include/config/inline/write/unlock/irqrestore.h) \
-  /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/atomic.h \
-    $(wildcard include/config/generic/atomic64.h) \
-  include/asm-generic/atomic-long.h \
   include/linux/math64.h \
   /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/div64.h \
   include/linux/kmod.h \
@@ -220,8 +232,6 @@ deps_/home/dooon/arm/my_dirves/watchdog/watchdog-poor/wdc.o := \
     $(wildcard include/config/base/small.h) \
   include/linux/numa.h \
     $(wildcard include/config/nodes/shift.h) \
-  include/linux/init.h \
-    $(wildcard include/config/hotplug.h) \
   include/linux/nodemask.h \
   include/linux/bitmap.h \
   include/linux/string.h \
@@ -269,13 +279,6 @@ deps_/home/dooon/arm/my_dirves/watchdog/watchdog-poor/wdc.o := \
     $(wildcard include/config/have/arch/nodedata/extension.h) \
   include/linux/notifier.h \
   include/linux/errno.h \
-  /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/errno.h \
-  include/asm-generic/errno.h \
-  include/asm-generic/errno-base.h \
-  include/linux/mutex.h \
-    $(wildcard include/config/debug/mutexes.h) \
-    $(wildcard include/config/have/arch/mutex/cpu/relax.h) \
-  include/linux/mutex-debug.h \
   include/linux/rwsem.h \
     $(wildcard include/config/rwsem/generic/spinlock.h) \
   include/linux/rwsem-spinlock.h \
@@ -330,7 +333,6 @@ deps_/home/dooon/arm/my_dirves/watchdog/watchdog-poor/wdc.o := \
   include/linux/kobject.h \
   include/linux/sysfs.h \
   include/linux/kobject_ns.h \
-  include/linux/kref.h \
   include/linux/moduleparam.h \
     $(wildcard include/config/alpha.h) \
     $(wildcard include/config/ia64.h) \
@@ -397,96 +399,15 @@ deps_/home/dooon/arm/my_dirves/watchdog/watchdog-poor/wdc.o := \
   include/linux/fcntl.h \
   /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/fcntl.h \
   include/asm-generic/fcntl.h \
-  include/linux/err.h \
-  include/linux/slab.h \
-    $(wildcard include/config/slab/debug.h) \
-    $(wildcard include/config/failslab.h) \
-    $(wildcard include/config/slub.h) \
-    $(wildcard include/config/slob.h) \
-    $(wildcard include/config/debug/slab.h) \
-    $(wildcard include/config/slab.h) \
-  include/linux/slub_def.h \
-    $(wildcard include/config/slub/stats.h) \
-    $(wildcard include/config/slub/debug.h) \
-  include/linux/kmemleak.h \
-    $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/cdev.h \
-  include/linux/mm.h \
-    $(wildcard include/config/sysctl.h) \
-    $(wildcard include/config/stack/growsup.h) \
-    $(wildcard include/config/transparent/hugepage.h) \
-    $(wildcard include/config/ksm.h) \
+  include/linux/interrupt.h \
+    $(wildcard include/config/generic/hardirqs.h) \
+    $(wildcard include/config/pm/sleep.h) \
+    $(wildcard include/config/generic/irq/probe.h) \
     $(wildcard include/config/proc/fs.h) \
-    $(wildcard include/config/debug/pagealloc.h) \
-    $(wildcard include/config/hibernation.h) \
-    $(wildcard include/config/memory/failure.h) \
-    $(wildcard include/config/hugetlbfs.h) \
-  include/linux/rbtree.h \
-  include/linux/debug_locks.h \
-    $(wildcard include/config/debug/locking/api/selftests.h) \
-  include/linux/mm_types.h \
-    $(wildcard include/config/split/ptlock/cpus.h) \
-    $(wildcard include/config/want/page/debug/flags.h) \
-    $(wildcard include/config/aio.h) \
-    $(wildcard include/config/mm/owner.h) \
-    $(wildcard include/config/mmu/notifier.h) \
-  include/linux/auxvec.h \
-  /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/auxvec.h \
-  include/linux/page-debug-flags.h \
-    $(wildcard include/config/page/poisoning.h) \
-    $(wildcard include/config/page/debug/something/else.h) \
-  /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/mmu.h \
-    $(wildcard include/config/cpu/has/asid.h) \
-  include/linux/range.h \
-  include/linux/bit_spinlock.h \
-  /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/pgtable.h \
-    $(wildcard include/config/highpte.h) \
-  include/asm-generic/4level-fixup.h \
-  /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/proc-fns.h \
-    $(wildcard include/config/cpu/arm7tdmi.h) \
-    $(wildcard include/config/cpu/arm720t.h) \
-    $(wildcard include/config/cpu/arm740t.h) \
-    $(wildcard include/config/cpu/arm9tdmi.h) \
-    $(wildcard include/config/cpu/arm920t.h) \
-    $(wildcard include/config/cpu/arm922t.h) \
-    $(wildcard include/config/cpu/arm925t.h) \
-    $(wildcard include/config/cpu/arm926t.h) \
-    $(wildcard include/config/cpu/arm940t.h) \
-    $(wildcard include/config/cpu/arm946e.h) \
-    $(wildcard include/config/cpu/arm1020.h) \
-    $(wildcard include/config/cpu/arm1020e.h) \
-    $(wildcard include/config/cpu/arm1022.h) \
-    $(wildcard include/config/cpu/arm1026.h) \
-    $(wildcard include/config/cpu/mohawk.h) \
-    $(wildcard include/config/cpu/feroceon.h) \
-    $(wildcard include/config/cpu/v6.h) \
-    $(wildcard include/config/cpu/v7.h) \
-  /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/cpu-single.h \
-  arch/arm/mach-s3c64xx/include/mach/vmalloc.h \
-  /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/pgtable-hwdef.h \
-  include/asm-generic/pgtable.h \
-  include/linux/page-flags.h \
-    $(wildcard include/config/pageflags/extended.h) \
-    $(wildcard include/config/arch/uses/pg/uncached.h) \
-    $(wildcard include/config/swap.h) \
-    $(wildcard include/config/s390.h) \
-  include/linux/huge_mm.h \
-  include/linux/vmstat.h \
-    $(wildcard include/config/vm/event/counters.h) \
-  include/linux/version.h \
-  include/linux/vmalloc.h \
-  include/linux/ctype.h \
-  include/linux/pagemap.h \
-  include/linux/highmem.h \
-    $(wildcard include/config/x86/32.h) \
-    $(wildcard include/config/debug/highmem.h) \
-  include/linux/uaccess.h \
-  /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/uaccess.h \
-  /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/unified.h \
-    $(wildcard include/config/arm/asm/unified.h) \
+  include/linux/irqreturn.h \
+  include/linux/irqnr.h \
   include/linux/hardirq.h \
     $(wildcard include/config/bkl.h) \
-    $(wildcard include/config/generic/hardirqs.h) \
     $(wildcard include/config/virt/cpu/accounting.h) \
     $(wildcard include/config/irq/time/accounting.h) \
   include/linux/ftrace_irq.h \
@@ -528,8 +449,24 @@ deps_/home/dooon/arm/my_dirves/watchdog/watchdog-poor/wdc.o := \
     $(wildcard include/config/fault/injection.h) \
     $(wildcard include/config/latencytop.h) \
     $(wildcard include/config/have/unstable/sched/clock.h) \
+    $(wildcard include/config/stack/growsup.h) \
     $(wildcard include/config/debug/stack/usage.h) \
     $(wildcard include/config/cgroup/sched.h) \
+    $(wildcard include/config/mm/owner.h) \
+  include/linux/rbtree.h \
+  include/linux/mm_types.h \
+    $(wildcard include/config/split/ptlock/cpus.h) \
+    $(wildcard include/config/want/page/debug/flags.h) \
+    $(wildcard include/config/aio.h) \
+    $(wildcard include/config/mmu/notifier.h) \
+    $(wildcard include/config/transparent/hugepage.h) \
+  include/linux/auxvec.h \
+  /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/auxvec.h \
+  include/linux/page-debug-flags.h \
+    $(wildcard include/config/page/poisoning.h) \
+    $(wildcard include/config/page/debug/something/else.h) \
+  /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/mmu.h \
+    $(wildcard include/config/cpu/has/asid.h) \
   /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/cputime.h \
   include/asm-generic/cputime.h \
   include/linux/sem.h \
@@ -561,30 +498,29 @@ deps_/home/dooon/arm/my_dirves/watchdog/watchdog-poor/wdc.o := \
   include/linux/cred.h \
     $(wildcard include/config/debug/credentials.h) \
   include/linux/key.h \
+    $(wildcard include/config/sysctl.h) \
   include/linux/sysctl.h \
   include/linux/selinux.h \
     $(wildcard include/config/security/selinux.h) \
   include/linux/aio.h \
   include/linux/aio_abi.h \
   include/linux/uio.h \
-  /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/cacheflush.h \
-    $(wildcard include/config/cpu/cache/v3.h) \
-    $(wildcard include/config/cpu/cache/v4.h) \
-    $(wildcard include/config/cpu/cache/v4wb.h) \
-    $(wildcard include/config/smp/on/up.h) \
-    $(wildcard include/config/arm/errata/411920.h) \
-    $(wildcard include/config/cpu/cache/vipt.h) \
-  /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/shmparam.h \
-  /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/cachetype.h \
-    $(wildcard include/config/cpu/cache/vivt.h) \
-  /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/kmap_types.h \
-  include/linux/hugetlb_inline.h \
+  include/trace/events/irq.h \
   include/linux/delay.h \
   /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/delay.h \
+  include/linux/miscdevice.h \
+  include/linux/major.h \
+  /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/uaccess.h \
+  /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/unified.h \
+    $(wildcard include/config/arm/asm/unified.h) \
   /home/dooon/ARM/linux-2.6.38/arch/arm/include/asm/io.h \
   arch/arm/mach-s3c64xx/include/mach/io.h \
   arch/arm/mach-s3c64xx/include/mach/gpio-bank-e.h \
+  arch/arm/mach-s3c64xx/include/mach/hardware.h \
+  arch/arm/mach-s3c64xx/include/mach/regs-gpio.h \
+  arch/arm/mach-s3c64xx/include/mach/map.h \
+  arch/arm/plat-samsung/include/plat/map-base.h \
 
-/home/dooon/arm/my_dirves/watchdog/watchdog-poor/wdc.o: $(deps_/home/dooon/arm/my_dirves/watchdog/watchdog-poor/wdc.o)
+/home/dooon/arm/my_dirves/i2s/i2s.o: $(deps_/home/dooon/arm/my_dirves/i2s/i2s.o)
 
-$(deps_/home/dooon/arm/my_dirves/watchdog/watchdog-poor/wdc.o):
+$(deps_/home/dooon/arm/my_dirves/i2s/i2s.o):

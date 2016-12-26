@@ -26,8 +26,12 @@
 #include<asm/irq.h>
 #include<asm/signal.h>
 #include<asm/uaccess.h>
+#include<mach/gpio-bank-e.h>
 
-#define S3C64XX_PA_WDC (0X7E004000)//曾误写少加一个0,浪费了2天时间查找错误，devil in the detial
+#define S3C64XX_I2SBASE 0X7F003000
+#define S3C64XX_I2SMOD  4
+
+#define S3C64XX_PA_WDC (0X7E004000)//曾误写少加一个0,浪费了2天时间查找错误
 #define S3C64XX_WDCON 0
 #define S3C64XX_WDDAT 4
 #define S3C64XX_WDCNT 8
@@ -40,6 +44,9 @@
 #define WDC_TIMER_ENABLE      (1<<5)
 
 static void __iomem *s3c_wdc_base;
+
+static void __iomem *s3c_i2s_base;
+
 static int wdc_major = 0;
 struct simple_dev 
 {
@@ -62,6 +69,10 @@ int wdc_open(struct inode *inode,struct file *filp)
   writel(0x6731,s3c_wdc_base + S3C64XX_WDCON);
   printk("S3C64XX_WDCON 0X%x\n",readl(s3c_wdc_base + S3C64XX_WDCON));
   printk("S3C64XX_WDCNT 0x%x\n",readl(s3c_wdc_base + S3C64XX_WDCNT));
+
+  writel(0x00000110,s3c_i2s_base + S3C64XX_I2SMOD);
+  printk("S3C64XX_I2SMOD 0x%x\n",readl(s3c_i2s_base + S3C64XX_I2SMOD));
+
 return 0;
 
 }
@@ -169,6 +180,9 @@ int __init wdc_init(void)
   {
     printk( KERN_NOTICE "ioremap ERROR\n");
   }
+
+  s3c_i2s_base = ioremap(S3C64XX_I2SBASE,0x100);
+
   return 0;
 failure_register_chrdev:
   return ret;
