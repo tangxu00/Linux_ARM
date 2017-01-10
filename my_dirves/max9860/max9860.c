@@ -21,7 +21,7 @@
 
 #define DEBUG_SHOW 0
 #define BUFFERSIZE 4
-#define DEVICE_NAME  "sim_i2c"
+#define DEVICE_NAME  "max"
 
 int dev_MAJOR=235;
 
@@ -40,19 +40,38 @@ int dev_MAJOR=235;
 #define S3C64XX_IISTXD 16
 #define S3C64XX_IISRXD 20
 
-static void __iomem *s3c_iis_base;
-static void __iomem *clk_src;
-static void __iomem *pclk_gate;
+#define CLK_PA 0X7E00F000
+#define EPLL_CON0 0X14
+#define EPLL_CON1 0X18
+#define CLK_SRC 0X1C
+#define CLK_DIV2 0X28
+#define PCLK_GATE 0X34
+#define SCLK_GATE 0X38
 
+static void __iomem *s3c_iis_base;
+static void __iomem *clk_pa;
 void s3c64xx_iis_init(void)
 {
   u32 gate;
   writel(0x33333,S3C64XX_GPECON);//配置GPE为iis模式
-  gate=readl(pclk_gate+4)|(3<<15);
-  writel(gate,(pclk_gate+4));//为iis1选通pclk
-  writel((readl(clk_src)|(3<<10)),clk_src);//codeclk
-  writel(0x79,(s3c_iis_base + S3C64XX_IISCON));
-  writel(0x130,(s3c_iis_base + S3C64XX_IISMOD));
+
+  writel(0x802d0103,(clk_pa+EPLL_CON0)); //配置epll
+  writel(0x289e,(clk_pa+EPLL_CON1));//为67.739MHZ
+  writel((readl(clk_pa+CLK_SRC)|(1<<2)),(clk_pa+CLK_SRC));//为iis选择EPLL
+  writel((readl(clk_pa+CLK_SRC)&(~(7<<10))),(clk_pa+CLK_SRC));//选通EPLL
+  writel((readl(clk_pa+CLK_DIV2)&(~(15<<12))),(clk_pa+CLK_DIV2));//设置分频系数为1
+  writel((readl(clk_pa+SCLK_GATE)|(1<<9)),(clk_pa+SCLK_GATE));//选通sclk_audio1
+  printk("epll_con0 0x%x\n",readl(clk_pa+EPLL_CON0));
+  printk("epll_con1 0x%x\n",readl(clk_pa+EPLL_CON1));
+  printk("clk_src 0x%x\n",readl(clk_pa+CLK_SRC));
+  printk("clk_div2 0x%x\n",readl(clk_pa+CLK_DIV2));
+  printk("sclk_gate 0x%x\n",readl(clk_pa+SCLK_GATE));
+
+  gate=readl(clk_pa+PCLK_GATE)|(3<<15);
+  writel(gate,clk_pa+PCLK_GATE);//为iis1选通pclk
+  //writel((readl(clk_src)|(3<<10)),clk_src);//codeclk
+  writel(0x61,(s3c_iis_base + S3C64XX_IISCON));
+  writel(0x530,(s3c_iis_base + S3C64XX_IISMOD));
   writel(0,(s3c_iis_base + S3C64XX_IISFIC));
   writel(0x8300,(s3c_iis_base + S3C64XX_IISPSR));
   printk("S3C64XX_IISCON 0x%x\n",readl(s3c_iis_base + S3C64XX_IISCON));
@@ -374,12 +393,12 @@ static int I2C_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
       wmsg.buffer[1]=0xc0;
       wmsg.buffer[2]=0;
       wmsg.buffer[3]=0;
-      wmsg.buffer[4]=0x08;
+      wmsg.buffer[4]=0x09;
       wmsg.buffer[5]=0;
       wmsg.buffer[6]=0x06;
-      wmsg.buffer[7]=0x03;
+      wmsg.buffer[7]=0x33;
       wmsg.buffer[8]=0;
-      wmsg.buffer[9]=0x20;
+      wmsg.buffer[9]=0x34;
       for(i=0;i<wmsg.len;i++)
       {
         if(writeThreeTimes(wmsg.addr+i,wmsg.buffer[i])==0)
@@ -387,7 +406,7 @@ static int I2C_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
           break;
         }
       }
-      if(writeThreeTimes(0x10,0x80)==0)
+      if(writeThreeTimes(0x10,0x83)==0)
       {
         break;
       }
@@ -462,9 +481,12 @@ static int __init I2C_init(void)
 	}
 
 	printk("i2c module init...\n");
-        s3c_iis_base = ioremap(S3C64XX_PA,0x100);
-        clk_src = ioremap(0x7e00f01c,0x100);
-        pclk_gate = ioremap(0x7e00f030,0x100);
+  s3c_iis_base = ioremap(S3C64XX_PA,0x100);
+  clk_pa = ioremap(CLK_PA,0x100);
+
+
+
+
 	if(s3c_iis_base==NULL)
     	{
       	  printk("error in ioremap\n");

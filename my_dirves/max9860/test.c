@@ -30,7 +30,7 @@ int main(int argc, char **argv)
     struct I2C_MSGbuffer msg;
     unsigned int fd, i; 
     int ret; 
-    fd = open("/dev/sim_i2c", O_RDWR); 
+    fd = open("/dev/max", O_RDWR); 
     if (!fd) 
     {     
         printf("opening i2c device Error\n"); 
@@ -49,7 +49,7 @@ int main(int argc, char **argv)
 
 	memset(&msg,0,sizeof(struct I2C_MSGbuffer));
 	msg.addr=0x03;
-	msg.len=10;
+	msg.len=14;
 	ret=ioctl(fd, I2C_READ_DATA, &msg);
 	if(ret>0)
 	{
