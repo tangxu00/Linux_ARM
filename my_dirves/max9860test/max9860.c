@@ -365,7 +365,7 @@ static int I2C_open(struct inode *inode, struct file *filp)
 static int max_read(struct file *filp,char __user *buf,size_t count,loff_t *f_pos)
 {
   //char wbuf[64000];
-  unsigned int i=0;
+  unsigned long int i=0;
   //printk("write begin\n");
  // if(copy_from_user(wbuf,buf,count))
    //   return -EFAULT;
