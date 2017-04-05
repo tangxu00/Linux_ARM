@@ -383,7 +383,7 @@ static int max_write(struct file *filp,const char __user *buf,size_t count,loff_
     return ret;
   }
   else
-    return -EFAULT;
+    return -1;
 }
 static int I2C_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 {

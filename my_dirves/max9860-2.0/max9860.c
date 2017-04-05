@@ -47,6 +47,7 @@ int dev_MAJOR=235;
 #define CLK_DIV2 0X28
 #define PCLK_GATE 0X34
 #define SCLK_GATE 0X38
+unsigned char wbuf[640000];
 
 static void __iomem *s3c_iis_base;
 static void __iomem *clk_pa;
@@ -71,7 +72,7 @@ void s3c64xx_iis_init(void)
   writel(gate,clk_pa+PCLK_GATE);//为iis1选通pclk
   //writel((readl(clk_src)|(3<<10)),clk_src);//codeclk
   writel(0x61,(s3c_iis_base + S3C64XX_IISCON));
-  writel(0x530,(s3c_iis_base + S3C64XX_IISMOD));
+  writel(0x510,(s3c_iis_base + S3C64XX_IISMOD));
   writel(0,(s3c_iis_base + S3C64XX_IISFIC));
   writel(0x8300,(s3c_iis_base + S3C64XX_IISPSR));
   printk("S3C64XX_IISCON 0x%x\n",readl(s3c_iis_base + S3C64XX_IISCON));
@@ -361,13 +362,14 @@ static int I2C_open(struct inode *inode, struct file *filp)
 	return ret;
 }
 
-static int max_write(struct file *filp,const char __user *buf,size_t count,loff_t *f_pos)
+static int max_read(struct file *filp,char __user *buf,size_t count,loff_t *f_pos)
 {
-  int ret;
-  char wbuf[10];
+  unsigned long int i=0;
+  //int ret;
+  //char wbuf[10];
   //printk("write begin\n");
-  if(copy_from_user(wbuf,buf,count))
-      return -EFAULT;
+  //if(copy_from_user(wbuf,buf,count))
+  //    return -EFAULT;
   //if(wbuf[0]==1)
   //{
    // if((readl(s3c_iis_base+S3C64XX_IISFIC)&0x1F)==16)
@@ -377,8 +379,20 @@ static int max_write(struct file *filp,const char __user *buf,size_t count,loff_
    // printk("FIFO wide %d\n",((readl(s3c_iis_base+S3C64XX_IISFIC))&0x1F));
    // printk("FIFO 0x%x",(readl(s3c_iis_base+S3C64XX_IISRXD)&0x0000ffff));
   //}
-  ret=readl(s3c_iis_base+S3C64XX_IISRXD)&0x0000ffff;
-  return ret;
+  //ret=readl(s3c_iis_base+S3C64XX_IISRXD)&0x0000ffff;
+  //return ret;
+  while(i<640000)
+  {
+    if((readl(s3c_iis_base + S3C64XX_IISCON)&0x200)==0)
+    {
+      wbuf[i]=readl(s3c_iis_base+S3C64XX_IISRXD)&0xff;
+      wbuf[i+1]=((readl(s3c_iis_base+S3C64XX_IISRXD)&0xff00)>>8);
+      i=i+2;
+    }
+  }
+  if(copy_to_user(buf,wbuf,count))
+    return -EFAULT;
+  return 0;
 }
 static int I2C_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 {
@@ -396,10 +410,10 @@ static int I2C_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
         //0x11,0xc0,0,0,0x08,0,0x06,0x03,0,0x20,
       //};
       wmsg.buffer[0]=0x11;
-      wmsg.buffer[1]=0x40;
+      wmsg.buffer[1]=0xc0;
       wmsg.buffer[2]=0x00;
-      wmsg.buffer[3]=0x00;
-      wmsg.buffer[4]=0x09;
+      wmsg.buffer[3]=0x30;
+      wmsg.buffer[4]=0x39;
       wmsg.buffer[5]=0x00;
       wmsg.buffer[6]=0x06;
       wmsg.buffer[7]=0x33;
@@ -473,7 +487,7 @@ static int I2C_release(struct inode *inode,struct file *filp)
 static struct file_operations I2C_fops={
 	.owner = THIS_MODULE,
 	.open = I2C_open,
-  .write = max_write,
+  .read = max_read,
 	.unlocked_ioctl = I2C_ioctl,
 	.release = I2C_release,
 };

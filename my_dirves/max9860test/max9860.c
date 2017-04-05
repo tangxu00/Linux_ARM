@@ -47,7 +47,7 @@ int dev_MAJOR=235;
 #define CLK_DIV2 0X28
 #define PCLK_GATE 0X34
 #define SCLK_GATE 0X38
-unsigned short int wbuf[640000];
+unsigned short int wbuf[320000];
 
 static void __iomem *s3c_iis_base;
 static void __iomem *clk_pa;
@@ -56,8 +56,8 @@ void s3c64xx_iis_init(void)
   u32 gate;
   writel(0x33333,S3C64XX_GPECON);//配置GPE为iis模式
 
-  writel(0x802d0103,(clk_pa+EPLL_CON0)); //配置epll
-  writel(0x289e,(clk_pa+EPLL_CON1));//为67.739MHZ
+  writel(0x80200103,(clk_pa+EPLL_CON0)); //配置epll
+  writel(0xc49c,(clk_pa+EPLL_CON1));//为49.152MHZ
   writel((readl(clk_pa+CLK_SRC)|(1<<2)),(clk_pa+CLK_SRC));//为iis选择EPLL
   writel((readl(clk_pa+CLK_SRC)&(~(7<<10))),(clk_pa+CLK_SRC));//选通EPLL
   writel((readl(clk_pa+CLK_DIV2)&(~(15<<12))),(clk_pa+CLK_DIV2));//设置分频系数为1
@@ -71,12 +71,12 @@ void s3c64xx_iis_init(void)
   gate=readl(clk_pa+PCLK_GATE)|(3<<15);
   writel(gate,clk_pa+PCLK_GATE);//为iis1选通pclk
   //writel((readl(clk_src)|(3<<10)),clk_src);//codeclk
-  writel(0x61,(s3c_iis_base + S3C64XX_IISCON));
-  writel(0x530,(s3c_iis_base + S3C64XX_IISMOD));
-  writel(0,(s3c_iis_base + S3C64XX_IISFIC));
+  writel(0x53,(s3c_iis_base + S3C64XX_IISCON));
+  writel(0x500,(s3c_iis_base + S3C64XX_IISMOD));
   writel(0x8300,(s3c_iis_base + S3C64XX_IISPSR));
   printk("S3C64XX_IISCON 0x%x\n",readl(s3c_iis_base + S3C64XX_IISCON));
   printk("S3C64XX_IISMOD 0x%x\n",readl(s3c_iis_base + S3C64XX_IISMOD));
+  writel(0x0,(s3c_iis_base + S3C64XX_IISFIC));
   printk("S3C64XX_IISFIC 0x%x\n",readl(s3c_iis_base + S3C64XX_IISFIC));
   printk("S3C64XX_IISPSR 0x%x\n",readl(s3c_iis_base + S3C64XX_IISPSR));
 }
@@ -356,7 +356,7 @@ static int I2C_open(struct inode *inode, struct file *filp)
 
 	SetSDAOut();
 	SetSCLOut();
-  s3c64xx_iis_init();
+  //s3c64xx_iis_init();
   printk("#############open##############\n");
 
 	return ret;
@@ -366,17 +366,18 @@ static int max_read(struct file *filp,char __user *buf,size_t count,loff_t *f_po
 {
   //char wbuf[64000];
   unsigned long int i=0;
+  s3c64xx_iis_init();
   //printk("write begin\n");
  // if(copy_from_user(wbuf,buf,count))
    //   return -EFAULT;
   //  printk("FIFO wide %d\n",((readl(s3c_iis_base+S3C64XX_IISFIC))&0x1F));
     //ret=readl(s3c_iis_base+S3C64XX_IISRXD)&0x0000ffff;
     //int wb=0x1111;
-    while(i<640000)
+    while(i<320000)
     {
       if((readl(s3c_iis_base + S3C64XX_IISCON)&0x200)==0)//FIFO not empty
       {
-        wbuf[i]=readl(s3c_iis_base+S3C64XX_IISRXD)&0xffff;
+        wbuf[i]=(readl(s3c_iis_base+S3C64XX_IISRXD)&0xffff);
         //wbuf[i+1]=((readl(s3c_iis_base+S3C64XX_IISRXD)&0xff00)>>8);
         i++;
         //wbuf[i]=wb&0xff;
@@ -385,7 +386,8 @@ static int max_read(struct file *filp,char __user *buf,size_t count,loff_t *f_po
         //wb++;
       }
     }
-    if(copy_to_user(buf,wbuf,count))
+    //printk("%hd\n",wbuf[310000]);
+    if(copy_to_user(buf,wbuf,2*count))
       return -EFAULT;
     //if((readl(s3c_iis_base + S3C64XX_IISCON)&0x200)==0)
     //{
@@ -406,20 +408,23 @@ static int I2C_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
       struct I2C_MSGbuffer wmsg;
       memset(&wmsg,0,sizeof(struct I2C_MSGbuffer));
       wmsg.addr=0x03;
-      wmsg.len=10;
+      wmsg.len=13;
       //wmsg.buffer[64]={
         //0x11,0xc0,0,0,0x08,0,0x06,0x03,0,0x20,
       //};
       wmsg.buffer[0]=0x11;
       wmsg.buffer[1]=0xc0;
-      wmsg.buffer[2]=0;
-      wmsg.buffer[3]=0;
-      wmsg.buffer[4]=0x09;
-      wmsg.buffer[5]=0;
+      wmsg.buffer[2]=0x00;
+      wmsg.buffer[3]=0x10;
+      wmsg.buffer[4]=0x18;
+      wmsg.buffer[5]=0x00;
       wmsg.buffer[6]=0x06;
       wmsg.buffer[7]=0x33;
       wmsg.buffer[8]=0;
       wmsg.buffer[9]=0x34;
+      wmsg.buffer[10]=0x00;
+      wmsg.buffer[11]=0x80;
+      wmsg.buffer[12]=0x10;
       for(i=0;i<wmsg.len;i++)
       {
         if(writeThreeTimes(wmsg.addr+i,wmsg.buffer[i])==0)

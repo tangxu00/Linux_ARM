@@ -50,7 +50,7 @@ typedef struct{
 }WAVHDR;
 
 unsigned int fd;
-US buf[640000];
+US buf[320000];
 
 struct I2C_MSGbuffer
 {
@@ -170,8 +170,9 @@ int main(int argc, char **argv)
     sleep(1);
   }*/
   //wret=write(fd,&buf[0],4);
+  
   if(sizeof(WAVHDR)!=44)puts("bad struct");
-  makewav(44100,640000);
+  makewav(48000,320000);
   //for(j=0;j<1024;j++)
   //  printf("%x ",buf[j]);
   /*dlen=64000000;
