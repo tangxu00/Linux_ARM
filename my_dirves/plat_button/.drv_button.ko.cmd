@@ -1,0 +1,1 @@
+cmd_/home/dooon/arm/my_dirves/plat_button/drv_button.ko := arm-linux-ld -EL -r  -T /home/dooon/ARM/linux-2.6.38/scripts/module-common.lds --build-id  -o /home/dooon/arm/my_dirves/plat_button/drv_button.ko /home/dooon/arm/my_dirves/plat_button/drv_button.o /home/dooon/arm/my_dirves/plat_button/drv_button.mod.o

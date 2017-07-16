@@ -416,7 +416,7 @@ static int I2C_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
       wmsg.buffer[2]=0x00;
       wmsg.buffer[3]=0x30;
       wmsg.buffer[4]=0x38;
-      wmsg.buffer[5]=0;
+      wmsg.buffer[5]=0x20;
       wmsg.buffer[6]=0x06;
       wmsg.buffer[7]=0x33;
       wmsg.buffer[8]=0;
